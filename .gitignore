@@ -1,0 +1,59 @@
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### Environment ###
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+### IDE ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+### Build ###
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+### System ###
+.DS_Store
+Thumbs.db
+
+### Logs ###
+*.log
+logs/
+
+### Others ###
+HELP.md
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.observatory.observatorysystem.client.controller.commondashboard.ResearchProgramsViewController"
+      spacing="15" alignment="TOP_CENTER">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label fx:id="titleLabel" text="Научные программы" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Обновить" onAction="#handleRefresh" style="-fx-font-size: 12;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Закрыть" onAction="#handleClose" style="-fx-font-size: 12;"/>
+    </HBox>
+
+    <TableView fx:id="programsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="nameColumn" text="Название" prefWidth="150"/>
+            <TableColumn fx:id="descriptionColumn" text="Описание" prefWidth="200"/>
+            <TableColumn fx:id="startDateColumn" text="Дата начала" prefWidth="100"/>
+            <TableColumn fx:id="endDateColumn" text="Дата окончания" prefWidth="100"/>
+            <TableColumn fx:id="statusColumn" text="Статус" prefWidth="100"/>
+            <TableColumn fx:id="budgetColumn" text="Бюджет" prefWidth="100"/>
+            <TableColumn fx:id="leadScientistColumn" text="Руководитель" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+</VBox>

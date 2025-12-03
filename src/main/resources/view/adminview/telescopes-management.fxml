@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.observatory.observatorysystem.client.controller.admindashboard.TelescopesManagementController"
+      spacing="20" alignment="TOP_CENTER">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="Управление телескопами" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <!-- Панель управления -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Обновить" onAction="#handleRefresh" style="-fx-font-size: 12;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Закрыть" onAction="#handleClose" style="-fx-font-size: 12;"/>
+    </HBox>
+
+    <!-- Таблица телескопов -->
+    <Label text="Существующие телескопы:" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+    <TableView fx:id="telescopesTable" VBox.vgrow="ALWAYS" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="nameColumn" text="Название" prefWidth="150"/>
+            <TableColumn fx:id="typeColumn" text="Тип" prefWidth="120"/>
+            <TableColumn fx:id="locationColumn" text="Местоположение" prefWidth="200"/>
+            <TableColumn fx:id="operationalColumn" text="Статус" prefWidth="100"/>
+            <TableColumn fx:id="actionsColumn" text="Действия" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <!-- Форма добавления нового телескопа -->
+    <Label text="Добавить новый телескоп:" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints prefWidth="100"/>
+            <ColumnConstraints prefWidth="200"/>
+        </columnConstraints>
+
+        <Label text="Название:*" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="newNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Тип:*" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="newTypeField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Местоположение:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="newLocationField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Статус:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="newOperationalCheckBox" text="Рабочий" selected="true"
+                  GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Button fx:id="addButton" text="Добавить телескоп" onAction="#handleAddTelescope"
+                GridPane.rowIndex="4" GridPane.columnIndex="1"
+                style="-fx-font-size: 14; -fx-pref-width: 150;"/>
+    </GridPane>
+
+</VBox>

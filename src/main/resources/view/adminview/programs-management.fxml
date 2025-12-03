@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.observatory.observatorysystem.client.controller.admindashboard.ProgramsManagementController"
+      spacing="20" alignment="TOP_CENTER">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="Управление научными программами" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <!-- Панель управления -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Обновить" onAction="#handleRefresh" style="-fx-font-size: 12;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Закрыть" onAction="#handleClose" style="-fx-font-size: 12;"/>
+    </HBox>
+
+    <!-- Таблица программ -->
+    <Label text="Существующие программы:" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+    <TableView fx:id="programsTable" VBox.vgrow="ALWAYS" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="nameColumn" text="Название" prefWidth="150"/>
+            <TableColumn fx:id="descriptionColumn" text="Описание" prefWidth="200"/>
+            <TableColumn fx:id="startDateColumn" text="Дата начала" prefWidth="100"/>
+            <TableColumn fx:id="endDateColumn" text="Дата окончания" prefWidth="100"/>
+            <TableColumn fx:id="statusColumn" text="Статус" prefWidth="100"/>
+            <TableColumn fx:id="budgetColumn" text="Бюджет" prefWidth="100"/>
+            <TableColumn fx:id="leadScientistColumn" text="Руководитель" prefWidth="150"/>
+            <TableColumn fx:id="actionsColumn" text="Действия" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <!-- Форма добавления новой программы -->
+    <Label text="Добавить новую программу:" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+    <GridPane hgap="10" vgap="10" style="-fx-pref-width: 600;">
+        <columnConstraints>
+            <ColumnConstraints prefWidth="120"/>
+            <ColumnConstraints prefWidth="250"/>
+        </columnConstraints>
+
+        <Label text="Название:*" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="newNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Описание:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextArea fx:id="newDescriptionField" prefRowCount="3" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Дата начала:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="newStartDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Дата окончания:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="newEndDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Статус:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="newStatusComboBox" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="Бюджет:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="newBudgetField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+        <Label text="Руководитель:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="newLeadScientistComboBox" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <Button fx:id="addButton" text="Добавить программу" onAction="#handleAddProgram"
+                GridPane.rowIndex="7" GridPane.columnIndex="1"
+                style="-fx-font-size: 14; -fx-pref-width: 150;"/>
+    </GridPane>
+
+</VBox>

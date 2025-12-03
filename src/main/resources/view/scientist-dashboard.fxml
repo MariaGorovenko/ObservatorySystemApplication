@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.observatory.observatorysystem.client.controller.ScientistDashboardController"
+      spacing="20" alignment="TOP_CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="welcomeLabel" text="Панель ученого" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Выйти" onAction="#handleLogout" style="-fx-font-size: 12;"/>
+    </HBox>
+
+    <TabPane>
+        <tabs>
+            <Tab text="Мои заявки" closable="false">
+                <VBox spacing="10">
+                    <Button text="Подать заявку" style="-fx-font-size: 14;"/>
+                    <Button text="Мои текущие заявки" style="-fx-font-size: 14;"/>
+                </VBox>
+            </Tab>
+            <Tab text="Программы" closable="false">
+                <VBox spacing="10" alignment="TOP_CENTER">
+                    <Button text="Доступные программы" onAction="#handleViewPrograms"
+                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
+                </VBox>
+            </Tab>
+            <Tab text="Телескопы" closable="false">
+                <VBox spacing="10" alignment="TOP_CENTER">
+                    <Button text="Доступные телескопы" onAction="#handleViewTelescopes"
+                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
+                </VBox>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+</VBox>
