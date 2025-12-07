@@ -22,8 +22,10 @@
         <tabs>
             <Tab text="Мои заявки" closable="false">
                 <VBox spacing="10">
-                    <Button text="Подать заявку" style="-fx-font-size: 14;"/>
-                    <Button text="Мои текущие заявки" style="-fx-font-size: 14;"/>
+                    <Button text="Подать заявку" onAction="#handleCreateObservations"
+                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
+                    <Button text="Мои текущие заявки" onAction="#handleViewMyObservations"
+                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
                 </VBox>
             </Tab>
             <Tab text="Программы" closable="false">

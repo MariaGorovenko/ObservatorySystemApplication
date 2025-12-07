@@ -38,8 +38,10 @@
             </Tab>
             <Tab text="Заявки" closable="false">
                 <VBox spacing="10">
-                    <Button text="Все заявки" style="-fx-font-size: 14;"/>
-                    <Button text="Статистика" style="-fx-font-size: 14;"/>
+                    <Button text="Все заявки" onAction="#handleManageAllObservations"
+                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
+                    <Button text="Статистика" onAction="#handleViewStatistics"
+                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
                 </VBox>
             </Tab>
             <Tab text="Пользователи" closable="false">

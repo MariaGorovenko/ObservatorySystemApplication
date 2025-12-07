@@ -1,7 +1,6 @@
 package com.observatory.observatorysystem.client.controller.admindashboard;
 
 import com.observatory.observatorysystem.client.service.ApiService;
-import com.observatory.observatorysystem.client.SessionContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -9,10 +8,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 public class AllObservationsController {
 
@@ -42,12 +39,15 @@ public class AllObservationsController {
     private ObservableList<String> statusList = FXCollections.observableArrayList("Все", "PENDING", "APPROVED", "SCHEDULED", "COMPLETED", "CANCELLED");
     private ObservableList<Integer> priorityList = FXCollections.observableArrayList(1, 2, 3);
 
+    // Храним ID телескопов для фильтрации
+    private Map<String, Long> telescopeIdMap = new HashMap<>();
+
     @FXML
     public void initialize() {
         setupTableColumns();
         setupFilterControls();
-        loadObservations();
         loadTelescopesForFilter();
+        loadObservations();
     }
 
     private void setupTableColumns() {
@@ -121,8 +121,7 @@ public class AllObservationsController {
         filterStatusCombo.setItems(statusList);
         filterStatusCombo.setValue("Все");
 
-        filterPriorityCombo.setItems(priorityList);
-        filterPriorityCombo.getItems().add(0, null);
+        filterPriorityCombo.getItems().addAll(null, 1, 2, 3);
         filterPriorityCombo.setValue(null);
     }
 
@@ -135,10 +134,14 @@ public class AllObservationsController {
                 );
 
                 telescopeList.clear();
+                telescopeIdMap.clear();
                 telescopeList.add("Все");
+
                 for (Map<String, Object> telescope : telescopes) {
                     String name = telescope.get("name") != null ? (String) telescope.get("name") : "N/A";
+                    Long id = telescope.get("id") != null ? Long.valueOf(telescope.get("id").toString()) : 0L;
                     telescopeList.add(name);
+                    telescopeIdMap.put(name, id);
                 }
                 filterTelescopeCombo.setItems(telescopeList);
                 filterTelescopeCombo.setValue("Все");
@@ -150,7 +153,56 @@ public class AllObservationsController {
 
     private void loadObservations() {
         try {
-            String response = apiService.get("/observations");
+            // Собираем параметры фильтрации
+            Map<String, String> params = new HashMap<>();
+
+            // Телескоп
+            String selectedTelescope = filterTelescopeCombo.getValue();
+            if (selectedTelescope != null && !selectedTelescope.equals("Все") && telescopeIdMap.containsKey(selectedTelescope)) {
+                Long telescopeId = telescopeIdMap.get(selectedTelescope);
+                params.put("telescopeId", telescopeId.toString());
+            }
+
+            // Статус
+            String selectedStatus = filterStatusCombo.getValue();
+            if (selectedStatus != null && !selectedStatus.equals("Все")) {
+                params.put("status", selectedStatus);
+            }
+
+            // Приоритет
+            Integer selectedPriority = filterPriorityCombo.getValue();
+            if (selectedPriority != null) {
+                params.put("priority", selectedPriority.toString());
+            }
+
+            // Даты
+            LocalDate startDate = filterStartDate.getValue();
+            if (startDate != null) {
+                params.put("startDate", startDate.toString());
+            }
+
+            LocalDate endDate = filterEndDate.getValue();
+            if (endDate != null) {
+                params.put("endDate", endDate.toString());
+            }
+
+            // Формируем URL с параметрами
+            String endpoint = "/observations";
+            if (!params.isEmpty()) {
+                endpoint = "/observations/filter";
+                StringBuilder queryParams = new StringBuilder();
+                for (Map.Entry<String, String> entry : params.entrySet()) {
+                    if (queryParams.length() > 0) {
+                        queryParams.append("&");
+                    }
+                    queryParams.append(entry.getKey()).append("=").append(entry.getValue());
+                }
+                endpoint += "?" + queryParams.toString();
+            }
+
+            System.out.println("Запрос к API: " + endpoint);
+
+            String response = apiService.get(endpoint);
 
             if (response == null || response.trim().isEmpty()) {
                 showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось загрузить заявки.");
@@ -170,13 +222,13 @@ public class AllObservationsController {
 
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось загрузить заявки: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     @FXML
     private void handleFilter() {
-        // Реализация фильтрации
-        loadObservations(); // Временная заглушка
+        loadObservations();
     }
 
     @FXML

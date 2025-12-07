@@ -53,6 +53,7 @@ public class SecurityConfig {
 
                         // Заявки
                         .requestMatchers("/api/observations/**").hasAnyRole("SCIENTIST", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/observations/stats").hasRole("ADMIN")
 
                         .anyRequest().authenticated()
                 )

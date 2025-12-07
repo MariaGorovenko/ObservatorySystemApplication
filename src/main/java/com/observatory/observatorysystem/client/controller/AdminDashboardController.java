@@ -125,6 +125,40 @@ public class AdminDashboardController {
         }
     }
 
+    @FXML
+    private void handleManageAllObservations() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/adminview/all-observations-management.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 1100, 800));
+            stage.setTitle("Управление заявками");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть управление заявками");
+        }
+    }
+
+    @FXML
+    private void handleViewStatistics() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/adminview/statistics.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.setTitle("Просмотр статистики по заявкам");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть просмотр программ");
+        }
+    }
+
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Rectangle?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.observatory.observatorysystem.client.controller.admindashboard.StatisticsController"
+            fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+
+    <VBox spacing="20" alignment="TOP_CENTER" minHeight="1000">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <!-- Заголовок -->
+        <Label text="Статистика наблюдений" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+        <!-- Панель управления -->
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Обновить" onAction="#handleUpdateCharts"
+                    style="-fx-font-size: 12; -fx-pref-width: 100;"/>
+            <Button fx:id="closeButton" text="Закрыть" onAction="#handleClose"
+                    style="-fx-font-size: 12; -fx-pref-width: 100;"/>
+        </HBox>
+
+        <!-- Статистика в цифрах -->
+        <Label text="Общая статистика заявок:" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+        <GridPane hgap="15" vgap="10" prefHeight="100">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="150"/>
+                <ColumnConstraints prefWidth="150"/>
+                <ColumnConstraints prefWidth="150"/>
+                <ColumnConstraints prefWidth="150"/>
+                <ColumnConstraints prefWidth="150"/>
+            </columnConstraints>
+
+            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="0">
+                <Label text="Всего заявок" style="-fx-font-size: 11; -fx-font-weight: bold;"/>
+                <Label fx:id="totalRequestsLabel" text="0"
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="1">
+                <Label text="Ожидают решения" style="-fx-font-size: 11; -fx-font-weight: bold;"/>
+                <Label fx:id="pendingRequestsLabel" text="0"
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #f39c12;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="2">
+                <Label text="Одобрено" style="-fx-font-size: 11; -fx-font-weight: bold;"/>
+                <Label fx:id="approvedRequestsLabel" text="0"
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="3">
+                <Label text="Запланированы" style="-fx-font-size: 11; -fx-font-weight: bold;"/>
+                <Label fx:id="scheduledRequestsLabel" text="0"
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #9b59b6;"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="4">
+                <Label text="Завершено" style="-fx-font-size: 11; -fx-font-weight: bold;"/>
+                <Label fx:id="completedRequestsLabel" text="0"
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+            </VBox>
+        </GridPane>
+
+        <!-- Графики - первая строка -->
+        <HBox spacing="20" prefHeight="350">
+            <!-- Pie Chart: Заявки по статусам -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Распределение заявок по статусам"
+                       style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                <PieChart fx:id="requestsByStatusChart"
+                          prefHeight="300" minHeight="300" legendVisible="true"/>
+            </VBox>
+
+            <!-- Bar Chart: Заявки по программам -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                <Label text="Заявки по научным программам"
+                       style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                <BarChart fx:id="requestsByProgramChart"
+                          prefHeight="300" minHeight="300">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" label="Программы" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" label="Количество" />
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+
+        <!-- Bar Chart: Использование телескопов -->
+        <VBox spacing="10" prefHeight="300">
+            <Label text="Использование телескопов"
+                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+            <BarChart fx:id="telescopeUsageChart"
+                      prefHeight="250" minHeight="250">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" label="Телескопы" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis side="LEFT" label="Наблюдения" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+
+        <!-- Дополнительные показатели -->
+        <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-border-color: #dee2e6; -fx-border-radius: 5;">
+            <Label text="Дополнительные показатели"
+                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <GridPane hgap="30" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="200"/>
+                    <ColumnConstraints prefWidth="200"/>
+                    <ColumnConstraints prefWidth="200"/>
+                    <ColumnConstraints prefWidth="200"/>
+                </columnConstraints>
+
+                <VBox spacing="5" GridPane.columnIndex="0">
+                    <Label text="Средний приоритет" style="-fx-font-size: 11; -fx-text-fill: #666;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="5">
+                        <Label fx:id="averagePriorityLabel" text="0.0"
+                               style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                        <Label text="/5" style="-fx-font-size: 11; -fx-text-fill: #999;"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="5" GridPane.columnIndex="1">
+                    <Label text="Заявок за месяц" style="-fx-font-size: 11; -fx-text-fill: #666;"/>
+                    <Label fx:id="monthlyRequestsLabel" text="0"
+                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                </VBox>
+
+                <VBox spacing="5" GridPane.columnIndex="2">
+                    <Label text="Средняя длительность" style="-fx-font-size: 11; -fx-text-fill: #666;"/>
+                    <Label fx:id="avgDurationLabel" text="0.0 ч"
+                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                </VBox>
+
+                <VBox spacing="5" GridPane.columnIndex="3">
+                    <Label text="Отклонено" style="-fx-font-size: 11; -fx-text-fill: #666;"/>
+                    <Label fx:id="rejectedRequestsLabel" text="0"
+                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                </VBox>
+            </GridPane>
+        </VBox>
+
+    </VBox>
+
+</ScrollPane>

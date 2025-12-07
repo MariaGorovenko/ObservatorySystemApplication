@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -175,6 +176,30 @@ public class ObservationController {
                 ));
         stats.put("statusStats", statusStats);
 
+        // Средний приоритет
+        double avgPriority = allObservations.stream()
+                .filter(obs -> obs.getPriority() != null)
+                .mapToInt(ObservationRequest::getPriority)
+                .average()
+                .orElse(0.0);
+        stats.put("averagePriority", String.format("%.1f", avgPriority));
+
+        // Заявки за последние 30 дней
+        LocalDate monthAgo = LocalDate.now().minusDays(30);
+        long monthlyRequests = allObservations.stream()
+                .filter(obs -> obs.getRequestedStart() != null)
+                .filter(obs -> obs.getRequestedStart().toLocalDate().isAfter(monthAgo))
+                .count();
+        stats.put("monthlyRequests", monthlyRequests);
+
+        // Средняя длительность
+        double avgDuration = allObservations.stream()
+                .filter(obs -> obs.getRequestedStart() != null && obs.getRequestedEnd() != null)
+                .mapToLong(obs -> java.time.Duration.between(obs.getRequestedStart(), obs.getRequestedEnd()).toHours())
+                .average()
+                .orElse(0.0);
+        stats.put("averageDuration", String.format("%.1f ч", avgDuration));
+
         return stats;
     }
 
@@ -295,7 +320,7 @@ public class ObservationController {
         return ResponseEntity.ok(response);
     }
 
-    // 8. GET - фильтрация заявок (упрощенная)
+    // 8. GET - фильтрация заявок
     @GetMapping("/filter")
     public List<Map<String, Object>> filterObservations(
             @RequestParam(required = false) Long telescopeId,
@@ -306,23 +331,55 @@ public class ObservationController {
 
         List<ObservationRequest> allObservations = observationRepository.findAll();
 
+        // Преобразуем строки дат в LocalDateTime
+        LocalDateTime startDateTime = null;
+        LocalDateTime endDateTime = null;
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        try {
+            if (startDate != null && !startDate.isEmpty()) {
+                startDateTime = LocalDate.parse(startDate, formatter).atStartOfDay();
+            }
+            if (endDate != null && !endDate.isEmpty()) {
+                endDateTime = LocalDate.parse(endDate, formatter).atTime(23, 59, 59);
+            }
+        } catch (Exception e) {
+            // Если ошибка парсинга дат - игнорируем их
+            System.out.println("Ошибка парсинга дат: " + e.getMessage());
+        }
+
+        // Делаем переменные effectively final для использования в лямбда-выражениях
+        final LocalDateTime finalStartDateTime = startDateTime;
+        final LocalDateTime finalEndDateTime = endDateTime;
+
         // Применяем фильтры
         return allObservations.stream()
                 .filter(obs -> telescopeId == null ||
                         (obs.getTelescope() != null && obs.getTelescope().getId().equals(telescopeId)))
                 .filter(obs -> status == null || status.equals(obs.getStatus()))
                 .filter(obs -> priority == null || priority.equals(obs.getPriority()))
+                .filter(obs -> finalStartDateTime == null ||
+                        (obs.getRequestedStart() != null && !obs.getRequestedStart().isBefore(finalStartDateTime)))
+                .filter(obs -> finalEndDateTime == null ||
+                        (obs.getRequestedEnd() != null && !obs.getRequestedEnd().isAfter(finalEndDateTime)))
                 .map(obs -> {
                     Map<String, Object> map = new HashMap<>();
                     map.put("id", obs.getId());
                     map.put("objectName", obs.getObjectName());
+                    map.put("coordinates", obs.getCoordinates());
+                    map.put("spectralRange", obs.getSpectralRange());
                     map.put("requestedStart", obs.getRequestedStart());
                     map.put("requestedEnd", obs.getRequestedEnd());
                     map.put("priority", obs.getPriority());
                     map.put("status", obs.getStatus());
+                    map.put("resultDescription", obs.getResultDescription());
                     map.put("programName", obs.getProgram() != null ? obs.getProgram().getName() : null);
+                    map.put("programId", obs.getProgram() != null ? obs.getProgram().getId() : null);
                     map.put("telescopeName", obs.getTelescope() != null ? obs.getTelescope().getName() : null);
+                    map.put("telescopeId", obs.getTelescope() != null ? obs.getTelescope().getId() : null);
                     map.put("userName", obs.getUser() != null ? obs.getUser().getFullName() : null);
+                    map.put("userId", obs.getUser() != null ? obs.getUser().getId() : null);
                     return map;
                 })
                 .collect(Collectors.toList());

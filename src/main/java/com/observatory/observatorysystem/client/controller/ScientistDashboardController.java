@@ -74,6 +74,40 @@ public class ScientistDashboardController {
         }
     }
 
+    @FXML
+    private void handleViewMyObservations() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/scientistview/my-observations.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.setTitle("Ваши заявки");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть список Ваших заявок");
+        }
+    }
+
+    @FXML
+    private void handleCreateObservations() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/scientistview/create-observation.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.setTitle("Создание новой заявки");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть форму для создания новой заявки");
+        }
+    }
+
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
