@@ -6,41 +6,58 @@
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.observatory.observatorysystem.client.controller.ScientistDashboardController"
-      spacing="20" alignment="TOP_CENTER">
+      spacing="20" alignment="TOP_CENTER" styleClass="app-background">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <Label fx:id="welcomeLabel" text="Панель ученого" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
+        <Label fx:id="welcomeLabel" text="🔬 Панель исследователя" styleClass="header-title"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button text="Выйти" onAction="#handleLogout" style="-fx-font-size: 12;"/>
+        <Button text="Выйти" onAction="#handleLogout" styleClass="btn-danger"/>
     </HBox>
 
-    <TabPane>
-        <tabs>
-            <Tab text="Мои заявки" closable="false">
-                <VBox spacing="10">
-                    <Button text="Подать заявку" onAction="#handleCreateObservations"
-                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
-                    <Button text="Мои текущие заявки" onAction="#handleViewMyObservations"
-                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
-                </VBox>
-            </Tab>
-            <Tab text="Программы" closable="false">
-                <VBox spacing="10" alignment="TOP_CENTER">
-                    <Button text="Доступные программы" onAction="#handleViewPrograms"
-                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
-                </VBox>
-            </Tab>
-            <Tab text="Телескопы" closable="false">
-                <VBox spacing="10" alignment="TOP_CENTER">
-                    <Button text="Доступные телескопы" onAction="#handleViewTelescopes"
-                            style="-fx-font-size: 14; -fx-pref-width: 200;"/>
-                </VBox>
-            </Tab>
-        </tabs>
-    </TabPane>
+    <!-- Основной контент -->
+    <VBox spacing="15" alignment="TOP_CENTER">
+        <Label text="Научная рабочая среда" styleClass="title-medium"/>
+
+        <TabPane styleClass="tabs-container">
+            <tabs>
+                <Tab text="📝 Мои заявки" closable="false">
+                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                        <Label text="Управление заявками на наблюдения" styleClass="title-small"/>
+                        <VBox spacing="10" alignment="CENTER">
+                            <Button text="Подать новую заявку" onAction="#handleCreateObservations"
+                                    styleClass="btn-main" prefWidth="220"/>
+                            <Button text="Мои текущие заявки" onAction="#handleViewMyObservations"
+                                    styleClass="btn-alt" prefWidth="220"/>
+                        </VBox>
+                    </VBox>
+                </Tab>
+
+                <Tab text="📚 Программы" closable="false">
+                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                        <Label text="Исследовательские программы" styleClass="title-small"/>
+                        <VBox spacing="10" alignment="CENTER">
+                            <Button text="Доступные программы" onAction="#handleViewPrograms"
+                                    styleClass="btn-main" prefWidth="220"/>
+                        </VBox>
+                    </VBox>
+                </Tab>
+
+                <Tab text="🔭 Телескопы" closable="false">
+                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                        <Label text="Оборудование обсерватории" styleClass="title-small"/>
+                        <VBox spacing="10" alignment="CENTER">
+                            <Button text="Доступные телескопы" onAction="#handleViewTelescopes"
+                                    styleClass="btn-main" prefWidth="220"/>
+                        </VBox>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </VBox>
 
 </VBox>

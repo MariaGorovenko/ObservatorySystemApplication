@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/11.0.1"
+<VBox alignment="CENTER" spacing="30" xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.observatory.observatorysystem.client.controller.RegisterController">
+      fx:controller="com.observatory.observatorysystem.client.controller.RegisterController"
+      stylesheets="@/static/css/styles.css"
+      styleClass="root-pane">
 
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets top="40" right="60" bottom="40" left="60"/>
     </padding>
 
-    <Text text="Регистрация в системе" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    <Text text="Регистрация в системе" styleClass="title"/>
+    <Text text="Регистрация в системе" styleClass="subtitle"/>
 
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <Label fx:id="welcomeLabel" text="Панель регистрации" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header-bar">
+        <Label text="Панель регистрации" styleClass="header-label"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button text="Назад" onAction="#handleBack" style="-fx-font-size: 12;"/>
+        <Button text="Назад" onAction="#handleBack" styleClass="back-button"/>
     </HBox>
 
-    <VBox spacing="10" style="-fx-pref-width: 300;">
-        <Label text="Логин:*"/>
-        <TextField fx:id="usernameField" promptText="Придумайте логин"/>
+    <VBox spacing="15" maxWidth="400" styleClass="form-container">
+        <Label text="Логин:*" styleClass="field-label"/>
+        <TextField fx:id="usernameField" promptText="Придумайте логин" styleClass="text-field"/>
 
-        <Label text="Пароль:*"/>
-        <PasswordField fx:id="passwordField" promptText="Придумайте пароль (мин. 6 символов)"/>
+        <Label text="Пароль:*" styleClass="field-label"/>
+        <PasswordField fx:id="passwordField" promptText="Придумайте пароль (мин. 6 символов)" styleClass="text-field"/>
 
-        <Label text="Подтверждение пароля:*"/>
-        <PasswordField fx:id="confirmPasswordField" promptText="Повторите пароль"/>
+        <Label text="Подтверждение пароля:*" styleClass="field-label"/>
+        <PasswordField fx:id="confirmPasswordField" promptText="Повторите пароль" styleClass="text-field"/>
 
-        <Label text="ФИО:*"/>
-        <TextField fx:id="fullNameField" promptText="Введите ваше полное имя"/>
+        <Label text="ФИО:*" styleClass="field-label"/>
+        <TextField fx:id="fullNameField" promptText="Введите ваше полное имя" styleClass="text-field"/>
 
-        <Label text="Email:"/>
-        <TextField fx:id="emailField" promptText="Введите email (необязательно)"/>
+        <Label text="Email:" styleClass="field-label"/>
+        <TextField fx:id="emailField" promptText="Введите email (необязательно)" styleClass="text-field"/>
 
         <Button fx:id="registerButton" text="Зарегистрироваться" onAction="#handleRegister"
-                style="-fx-font-size: 14; -fx-pref-height: 35; -fx-pref-width: 200;"/>
+                styleClass="action-button"/>
     </VBox>
-
 </VBox>

@@ -1,5 +1,6 @@
 package com.observatory.observatorysystem.client.controller;
 
+import com.observatory.observatorysystem.client.StageManager;
 import com.observatory.observatorysystem.client.service.ApiService;
 import com.observatory.observatorysystem.client.SessionContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,17 +26,9 @@ public class LoginController {
     private void handleBack() {
         try {
             Stage currentStage = (Stage) usernameField.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/auth-main.fxml"));
-            Parent root = loader.load();
-
-            Stage mainStage = new Stage();
-            mainStage.setScene(new Scene(root, 500, 400));
-            mainStage.setTitle("Система астрономической обсерватории");
-            mainStage.setResizable(false);
-            mainStage.show();
-
             currentStage.close();
+
+            StageManager.showAuthMain();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,6 +99,11 @@ public class LoginController {
 
             System.out.println("Логин успешен: " + username + ", ID: " + userId + ", роль: " + role);
 
+            Stage currentLoginStage = (Stage) usernameField.getScene().getWindow();
+            currentLoginStage.close();
+
+            StageManager.hideAuthMain();
+
             // 8. Переходим на соответствующую панель
             navigateToDashboard(role);
 
@@ -137,37 +135,8 @@ public class LoginController {
         return null;
     }
 
-//    // НОВЫЙ МЕТОД: Получить роль пользователя по ID
-//    private String getUserRoleById(Long userId) {
-//        try {
-//            String response = apiService.get("/users/" + userId);
-//            if (response != null && !response.trim().isEmpty()) {
-//                Map<String, Object> userData = objectMapper.readValue(response, Map.class);
-//                return userData.get("role") != null ? (String) userData.get("role") : "SCIENTIST";
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Ошибка при получении роли: " + e.getMessage());
-//        }
-//        return "SCIENTIST";
-//    }
-//
-//    // НОВЫЙ МЕТОД: Получить ФИО пользователя по ID
-//    private String getUserFullNameById(Long userId) {
-//        try {
-//            String response = apiService.get("/users/" + userId);
-//            if (response != null && !response.trim().isEmpty()) {
-//                Map<String, Object> userData = objectMapper.readValue(response, Map.class);
-//                return userData.get("fullName") != null ? (String) userData.get("fullName") : "";
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Ошибка при получении ФИО: " + e.getMessage());
-//        }
-//        return "";
-//    }
-
     private void navigateToDashboard(String role) {
         try {
-            Stage currentStage = (Stage) usernameField.getScene().getWindow();
 
             if ("ADMIN".equals(role)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin-dashboard.fxml"));
@@ -193,7 +162,7 @@ public class LoginController {
                 scientistStage.show();
             }
 
-            currentStage.close();
+            StageManager.hideAuthMain();
 
         } catch (Exception e) {
             e.printStackTrace();

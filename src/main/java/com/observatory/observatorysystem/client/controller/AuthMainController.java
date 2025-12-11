@@ -1,5 +1,6 @@
 package com.observatory.observatorysystem.client.controller;
 
+import com.observatory.observatorysystem.client.StageManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,15 +22,13 @@ public class AuthMainController {
             Parent root = loader.load();
 
             Stage loginStage = new Stage();
-            loginStage.setScene(new Scene(root, 600, 400));
+            loginStage.setScene(new Scene(root, 900, 800));
             loginStage.setTitle("Вход в систему");
-            loginStage.setResizable(false);
+            loginStage.setResizable(true);
             loginStage.show();
 
-            // Закрываем текущее окно авторизации
-            if (currentStage != null) {
-                currentStage.close();
-            }
+            StageManager.hideAuthMain();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,15 +41,13 @@ public class AuthMainController {
             Parent root = loader.load();
 
             Stage registerStage = new Stage();
-            registerStage.setScene(new Scene(root, 600, 500));
+            registerStage.setScene(new Scene(root, 900, 800));
             registerStage.setTitle("Регистрация");
-            registerStage.setResizable(false);
+            registerStage.setResizable(true);
             registerStage.show();
 
-            // Закрываем текущее окно авторизации
-            if (currentStage != null) {
-                currentStage.close();
-            }
+            StageManager.hideAuthMain();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,0 +1,123 @@
+.root-pane {
+    -fx-background-image: url("/images/background.jpg");  /* Или твой текущий путь */
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-font-family: "Segoe UI", "Helvetica", Arial, sans-serif;
+    -fx-text-fill: white;  /* Попытка глобально, но может не сработать везде */
+}
+
+/* Глобально для всех Text — это точно сработает */
+.text {
+    -fx-fill: white;  /* Для Text-нод именно -fx-fill, а не -fx-text-fill */
+    -fx-font-smoothing-type: lcd;
+}
+
+/* Специально для твоих заголовков */
+.title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 2);  /* Тёмная тень для контраста */
+}
+
+.subtitle {
+    -fx-font-size: 18px;
+    -fx-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 5, 0, 0, 1);
+}
+
+
+/* Кнопки */
+.action-button {
+    -fx-pref-width: 240px;
+    -fx-pref-height: 50px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(0, 0, 0, 0.5);  /* Тёмная полупрозрачная подложка */
+    -fx-text-fill: white;  /* Явно белый текст */
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.6);
+    -fx-border-width: 2;
+}
+
+.action-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+}
+
+.action-button:pressed {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Полупрозрачная панель формы */
+.form-container {
+    -fx-background-color: rgba(10, 15, 30, 0.6);
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.9), 20, 0.3, 0, 8);
+    -fx-max-width: 450;
+}
+
+.header-bar {
+    -fx-padding: 10 0 20 0;
+}
+
+.header-label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #cccccc;
+}
+
+.back-button {
+    -fx-font-size: 15px;
+    -fx-text-fill: #cccccc;
+    -fx-background-color: transparent;
+}
+
+.back-button:hover {
+    -fx-text-fill: white;
+    -fx-underline: true;
+}
+
+.field-label {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14px;
+}
+
+.text-field {
+    -fx-pref-height: 40px;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #888888;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-padding: 0 12 0 12;
+}
+
+.text-field:focused {
+    -fx-border-color: #a0d8ff;
+    -fx-border-width: 2;
+    -fx-effect: innershadow(gaussian, rgba(160, 216, 255, 0.4), 10, 0, 0, 0);
+}
+
+.action-button.primary {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 48px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-color: #1e3a5f;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #2e5a8f;
+}
+
+.action-button.primary:hover {
+    -fx-background-color: #2e5a8f;
+}
+
+.action-button.primary:pressed {
+    -fx-background-color: #0f2740;
+}

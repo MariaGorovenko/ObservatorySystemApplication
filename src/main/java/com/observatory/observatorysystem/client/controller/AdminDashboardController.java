@@ -1,6 +1,7 @@
 package com.observatory.observatorysystem.client.controller;
 
 import com.observatory.observatorysystem.client.SessionContext;
+import com.observatory.observatorysystem.client.StageManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,21 +22,16 @@ public class AdminDashboardController {
     @FXML
     private void handleLogout() {
         SessionContext.logout();
+
         try {
             Stage currentStage = (Stage) welcomeLabel.getScene().getWindow();
+            currentStage.close();  // Закрываем дашборд
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/auth-main.fxml"));
-            Parent root = loader.load();
+            StageManager.showAuthMain();  // Показываем обратно исходное окно авторизации
 
-            Stage authStage = new Stage();
-            authStage.setScene(new Scene(root, 500, 400));
-            authStage.setTitle("Система астрономической обсерватории");
-            authStage.setResizable(false);
-            authStage.show();
-
-            currentStage.close();
         } catch (Exception e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось вернуться на экран входа");
         }
     }
 

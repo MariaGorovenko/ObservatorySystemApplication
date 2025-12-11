@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.observatory.observatorysystem.client.controller.LoginController">
+<VBox alignment="CENTER" spacing="30" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.observatory.observatorysystem.client.controller.LoginController"
+      stylesheets="@/static/css/styles.css"
+      styleClass="root-pane">
+
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets top="40" right="60" bottom="40" left="60"/>
     </padding>
 
-    <Text text="Система астрономической обсерватории" />
-    <Text text="Вход в систему" />
+    <Text text="Система астрономической обсерватории" styleClass="title"/>
+    <Text text="Вход в систему" styleClass="subtitle"/>
 
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <Label fx:id="welcomeLabel" text="Панель аутентификации" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header-bar">
+        <Label text="Панель аутентификации" styleClass="header-label"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button text="Назад" onAction="#handleBack" style="-fx-font-size: 12;"/>
+        <Button text="Назад" onAction="#handleBack" styleClass="back-button"/>
     </HBox>
 
-    <VBox spacing="10">
-        <Label text="Логин:" />
-        <TextField fx:id="usernameField" promptText="Введите логин" />
+    <VBox spacing="15" styleClass="form-container">
+        <Label text="Логин:" styleClass="field-label"/>
+        <TextField fx:id="usernameField" promptText="Введите логин" styleClass="text-field"/>
 
-        <Label text="Пароль:" />
-        <PasswordField fx:id="passwordField" promptText="Введите пароль" />
+        <Label text="Пароль:" styleClass="field-label"/>
+        <PasswordField fx:id="passwordField" promptText="Введите пароль" styleClass="text-field"/>
 
-        <Button fx:id="loginButton" text="Войти" onAction="#handleLogin" />
+        <Button fx:id="loginButton" text="Войти" onAction="#handleLogin" styleClass="action-button"/>
     </VBox>
 </VBox>

@@ -1,6 +1,7 @@
 package com.observatory.observatorysystem.client.controller;
 
 import com.observatory.observatorysystem.client.SessionContext;
+import com.observatory.observatorysystem.client.StageManager;
 import com.observatory.observatorysystem.client.service.ApiService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
@@ -28,17 +29,9 @@ public class RegisterController {
     private void handleBack() {
         try {
             Stage currentStage = (Stage) usernameField.getScene().getWindow();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/auth-main.fxml"));
-            Parent root = loader.load();
-
-            Stage mainStage = new Stage();
-            mainStage.setScene(new Scene(root, 500, 400));
-            mainStage.setTitle("Система астрономической обсерватории");
-            mainStage.setResizable(false);
-            mainStage.show();
-
             currentStage.close();
+
+            StageManager.showAuthMain();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,6 +145,11 @@ public class RegisterController {
                     "Регистрация и вход прошли успешно!\n" +
                             "Добро пожаловать, " + fullName + "!");
 
+            Stage currentStage = (Stage) registerButton.getScene().getWindow();
+            currentStage.close();
+
+            openScientistDashboard();
+
             // 5. Переходим на панель ученого
             openScientistDashboard();
 
@@ -164,8 +162,6 @@ public class RegisterController {
 
     private void openScientistDashboard() {
         try {
-            Stage currentStage = (Stage) registerButton.getScene().getWindow();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/scientist-dashboard.fxml"));
             Parent root = loader.load();
 
@@ -177,7 +173,7 @@ public class RegisterController {
             newStage.setTitle("Система обсерватории - Ученый");
             newStage.show();
 
-            currentStage.close();
+            StageManager.hideAuthMain();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -188,8 +184,6 @@ public class RegisterController {
     @FXML
     private void handleLogin() {
         try {
-            Stage currentStage = (Stage) usernameField.getScene().getWindow();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
             Parent root = loader.load();
 
@@ -199,7 +193,8 @@ public class RegisterController {
             loginStage.setResizable(false);
             loginStage.show();
 
-            currentStage.close();
+            StageManager.showAuthMain();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
