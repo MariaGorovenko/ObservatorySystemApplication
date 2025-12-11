@@ -169,7 +169,7 @@ public class RegisterController {
             controller.setUserInfo();
 
             Stage newStage = new Stage();
-            newStage.setScene(new Scene(root, 800, 600));
+            newStage.setScene(new Scene(root, 900, 800));
             newStage.setTitle("Система обсерватории - Ученый");
             newStage.show();
 

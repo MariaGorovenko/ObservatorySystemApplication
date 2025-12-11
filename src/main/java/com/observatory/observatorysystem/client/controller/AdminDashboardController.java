@@ -42,31 +42,13 @@ public class AdminDashboardController {
             Parent root = loader.load();
 
             Stage usersStage = new Stage();
-            usersStage.setScene(new Scene(root, 700, 500));
+            usersStage.setScene(new Scene(root, 900, 700));
             usersStage.setTitle("Управление пользователями");
             usersStage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть управление пользователями");
-        }
-    }
-
-    @FXML
-    private void handleViewTelescopes() {
-        try {
-            System.out.println("Opening telescopes view...");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/commonview/telescopes-view.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root, 800, 600));
-            stage.setTitle("Просмотр телескопов - Администратор");
-            stage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть просмотр телескопов: " + e.getMessage());
         }
     }
 
@@ -88,30 +70,13 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private void handleViewPrograms() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/commonview/research-programs-view.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root, 1000, 600));
-            stage.setTitle("Просмотр научных программ - Администратор");
-            stage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть просмотр программ");
-        }
-    }
-
-    @FXML
     private void handleManagePrograms() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/adminview/programs-management.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
-            stage.setScene(new Scene(root, 1100, 800));
+            stage.setScene(new Scene(root, 1200, 800));
             stage.setTitle("Управление научными программами");
             stage.show();
 
@@ -128,7 +93,7 @@ public class AdminDashboardController {
             Parent root = loader.load();
 
             Stage stage = new Stage();
-            stage.setScene(new Scene(root, 1100, 800));
+            stage.setScene(new Scene(root, 1300, 800));
             stage.setTitle("Управление заявками");
             stage.show();
 
@@ -145,7 +110,7 @@ public class AdminDashboardController {
             Parent root = loader.load();
 
             Stage stage = new Stage();
-            stage.setScene(new Scene(root, 1000, 600));
+            stage.setScene(new Scene(root, 1100, 800));
             stage.setTitle("Просмотр статистики по заявкам");
             stage.show();
 

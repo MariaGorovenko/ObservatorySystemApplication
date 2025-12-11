@@ -146,7 +146,7 @@ public class LoginController {
                 controller.setUserInfo();
 
                 Stage adminStage = new Stage();
-                adminStage.setScene(new Scene(root, 800, 600));
+                adminStage.setScene(new Scene(root, 900, 800));
                 adminStage.setTitle("Панель администратора");
                 adminStage.show();
             } else {
@@ -157,7 +157,7 @@ public class LoginController {
                 controller.setUserInfo();
 
                 Stage scientistStage = new Stage();
-                scientistStage.setScene(new Scene(root, 800, 600));
+                scientistStage.setScene(new Scene(root, 900, 800));
                 scientistStage.setTitle("Панель ученого");
                 scientistStage.show();
             }

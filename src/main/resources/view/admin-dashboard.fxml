@@ -55,6 +55,17 @@
                     </VBox>
                 </Tab>
 
+                <Tab text="🔭 Телескопы" closable="false">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
+                        <Label text="Управление телескопами" styleClass="title-small"/>
+                        <VBox spacing="15" alignment="CENTER">
+                            <Button text="Доступные телескопы" onAction="#handleManageTelescopes"
+                                    styleClass="btn-main" prefWidth="250"/>
+                            <Text text="Просмотр характеристик и доступности оборудования" styleClass="tab-field-label"/>
+                        </VBox>
+                    </VBox>
+                </Tab>
+
                 <Tab text="👥 Пользователи" closable="false">
                     <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
                         <Label text="Управление пользователями системы" styleClass="title-small"/>

@@ -39,11 +39,11 @@ public class ScientistDashboardController {
     private void handleViewTelescopes() {
         try {
             System.out.println("Opening telescopes view as scientist...");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/commonview/telescopes-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/scientistview/telescopes-view.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
-            stage.setScene(new Scene(root, 800, 600));
+            stage.setScene(new Scene(root, 900, 700));
             stage.setTitle("Доступные телескопы - Ученый");
             stage.show();
 
@@ -56,7 +56,7 @@ public class ScientistDashboardController {
     @FXML
     private void handleViewPrograms() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/commonview/research-programs-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/scientistview/research-programs-view.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
@@ -77,7 +77,7 @@ public class ScientistDashboardController {
             Parent root = loader.load();
 
             Stage stage = new Stage();
-            stage.setScene(new Scene(root, 1000, 600));
+            stage.setScene(new Scene(root, 1200, 600));
             stage.setTitle("Ваши заявки");
             stage.show();
 

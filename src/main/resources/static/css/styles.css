@@ -122,6 +122,7 @@
     -fx-background-color: white;
     -fx-background-radius: 5;
     -fx-padding: 5 15;
+    -fx-font-weight: bold;
 }
 
 .title-medium {
@@ -287,4 +288,105 @@
 
 .date-picker-popup .day-cell:selected {
     -fx-background-color: rgba(60, 70, 90);
+}
+
+/* --- Стили для Spinner --- */
+
+.spinner {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-border-color: white;
+    -fx-border-radius: 4;
+    -fx-pref-width: 80px;
+    -fx-min-width: 80px;
+}
+
+.spinner .text-field {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 0;
+    -fx-padding: 6 10; /* Увеличиваем padding */
+    -fx-font-size: 13px; /* Увеличиваем шрифт */
+    -fx-alignment: center; /* Выравнивание по центру */
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-border-color: white;
+    -fx-border-width: 1;
+    -fx-background-insets: 0;
+    -fx-pref-width: 20px; /* Ширина кнопок */
+    -fx-min-width: 20px;
+}
+
+.spinner .increment-arrow-button {
+    -fx-border-width: 0 1 1 1;
+    -fx-border-radius: 0 4 0 0;
+}
+
+.spinner .decrement-arrow-button {
+    -fx-border-width: 1 1 0 1;
+    -fx-border-radius: 0 0 4 0;
+}
+
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: white;
+    -fx-shape: "M 0 0 L 5 5 L 10 0 Z";
+    -fx-padding: 4 8 4 8;
+    -fx-scale-x: 1.2; /* Увеличиваем стрелки */
+    -fx-scale-y: 1.2;
+}
+
+.spinner .decrement-arrow {
+    -fx-shape: "M 0 5 L 5 0 L 10 5 Z";
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: rgba(40, 50, 70);
+}
+
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-color: rgba(60, 70, 90);
+}
+
+.spinner:focused {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+}
+
+/* Стили для текста внутри Spinner */
+.spinner .text-field .text {
+    -fx-fill: white;
+    -fx-font-size: 13px;
+}
+
+/* Стили для TextField внутри Spinner при фокусе */
+.spinner:focused .text-field {
+    -fx-background-color: rgba(30, 40, 60);
+}
+
+/* Убираем рамку при фокусе внутри Spinner */
+.spinner .text-field:focused {
+    -fx-background-color: rgba(30, 40, 60);
+    -fx-border-width: 0;
+}
+
+/* Для спиннеров часов и минут - можно сделать чуть уже */
+.spinner.small {
+    -fx-pref-width: 70px;
+    -fx-min-width: 70px;
+}
+
+.spinner.medium {
+    -fx-pref-width: 90px;
+    -fx-min-width: 90px;
+}
+
+.spinner.large {
+    -fx-pref-width: 110px;
+    -fx-min-width: 110px;
 }
