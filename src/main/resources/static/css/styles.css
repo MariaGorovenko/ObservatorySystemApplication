@@ -212,3 +212,79 @@
     -fx-fill: white;
     -fx-font-size: 14px;
 }
+
+/* --- Стили для ComboBox --- */
+
+.combo-box {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-border-color: white;
+    -fx-text-fill: white;
+}
+
+.combo-box .arrow {
+    -fx-background-color: white;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-text-fill: white;
+}
+
+.combo-box .list-view {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-border-color: white;
+}
+
+.combo-box .list-cell:filled {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell:filled:hover {
+    -fx-background-color: rgba(40, 50, 70);
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell:filled:selected {
+    -fx-background-color: rgba(60, 70, 90);
+    -fx-text-fill: white;
+}
+
+/* Стили для DatePicker (если тоже нужны) */
+.date-picker {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-border-color: white;
+}
+
+.date-picker .text-field {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}
+
+.date-picker-popup {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-border-color: white;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: rgba(20, 30, 50);
+}
+
+.date-picker-popup .spinner-label {
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .day-cell {
+    -fx-background-color: rgba(20, 30, 50);
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: rgba(40, 50, 70);
+}
+
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: rgba(60, 70, 90);
+}

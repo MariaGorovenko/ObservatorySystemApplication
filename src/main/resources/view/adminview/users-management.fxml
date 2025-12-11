@@ -6,26 +6,24 @@
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.observatory.observatorysystem.client.controller.admindashboard.UsersManagementController"
-      spacing="15" alignment="TOP_CENTER">
+      spacing="15" alignment="TOP_CENTER"
+      style="-fx-background-color: rgba(20, 30, 50); -fx-padding: 20;"
+      stylesheets="@/static/css/styles.css">
 
-    <padding>
-        <Insets top="15" right="15" bottom="15" left="15"/>
-    </padding>
-
-    <Label text="Управление пользователями" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+    <Label text="Управление пользователями" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
 
     <HBox spacing="10" alignment="CENTER_LEFT">
-        <Button text="Обновить" onAction="#handleRefresh" style="-fx-font-size: 12;"/>
-        <Button text="Изменить роль" onAction="#handleChangeRole" style="-fx-font-size: 12;"/>
+        <Button text="Обновить" onAction="#handleRefresh" style="-fx-background-color: white; -fx-text-fill: rgba(20, 30, 50);"/>
+        <Button text="Изменить роль" onAction="#handleChangeRole" style="-fx-background-color: white; -fx-text-fill: rgba(20, 30, 50);"/>
     </HBox>
 
-    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS" style="-fx-border-color: white; -fx-border-width: 1;">
         <columns>
-            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
-            <TableColumn fx:id="usernameColumn" text="Логин" prefWidth="120"/>
-            <TableColumn fx:id="fullNameColumn" text="ФИО" prefWidth="200"/>
-            <TableColumn fx:id="emailColumn" text="Email" prefWidth="150"/>
-            <TableColumn fx:id="roleColumn" text="Роль" prefWidth="100"/>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50" style="-fx-text-fill: rgba(20, 30, 50);"/>
+            <TableColumn fx:id="usernameColumn" text="Логин" prefWidth="120" style="-fx-text-fill: rgba(20, 30, 50);"/>
+            <TableColumn fx:id="fullNameColumn" text="ФИО" prefWidth="200" style="-fx-text-fill: rgba(20, 30, 50);"/>
+            <TableColumn fx:id="emailColumn" text="Email" prefWidth="150" style="-fx-text-fill: rgba(20, 30, 50);"/>
+            <TableColumn fx:id="roleColumn" text="Роль" prefWidth="100" style="-fx-text-fill: rgba(20, 30, 50);"/>
         </columns>
     </TableView>
 
