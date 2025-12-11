@@ -3,56 +3,65 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.observatory.observatorysystem.client.controller.ScientistDashboardController"
-      spacing="20" alignment="TOP_CENTER" styleClass="app-background">
+      spacing="20" alignment="TOP_CENTER"
+      stylesheets="@/static/css/styles.css"
+      styleClass="app-background">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <!-- Header -->
     <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
         <Label fx:id="welcomeLabel" text="🔬 Панель исследователя" styleClass="header-title"/>
         <Region HBox.hgrow="ALWAYS"/>
         <Button text="Выйти" onAction="#handleLogout" styleClass="btn-danger"/>
     </HBox>
 
-    <!-- Основной контент -->
-    <VBox spacing="15" alignment="TOP_CENTER">
+    <VBox spacing="15" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
         <Label text="Научная рабочая среда" styleClass="title-medium"/>
 
-        <TabPane styleClass="tabs-container">
+        <TabPane styleClass="tab-pane" VBox.vgrow="ALWAYS">
             <tabs>
                 <Tab text="📝 Мои заявки" closable="false">
-                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
                         <Label text="Управление заявками на наблюдения" styleClass="title-small"/>
-                        <VBox spacing="10" alignment="CENTER">
-                            <Button text="Подать новую заявку" onAction="#handleCreateObservations"
-                                    styleClass="btn-main" prefWidth="220"/>
-                            <Button text="Мои текущие заявки" onAction="#handleViewMyObservations"
-                                    styleClass="btn-alt" prefWidth="220"/>
-                        </VBox>
+                        <HBox spacing="30" alignment="CENTER">
+                            <VBox spacing="15" alignment="CENTER">
+                                <Button text="Создать новую заявку" onAction="#handleCreateObservations"
+                                        styleClass="btn-main" prefWidth="250"/>
+                                <Text text="Подача заявки на телескоп и время" styleClass="tab-field-label"/>
+                            </VBox>
+                            <VBox spacing="15" alignment="CENTER">
+                                <Button text="Мои текущие заявки" onAction="#handleViewMyObservations"
+                                        styleClass="btn-main" prefWidth="250"/>
+                                <Text text="Просмотр статуса и результатов Ваших заявок" styleClass="tab-field-label"/>
+                            </VBox>
+                        </HBox>
                     </VBox>
                 </Tab>
 
                 <Tab text="📚 Программы" closable="false">
-                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
-                        <Label text="Исследовательские программы" styleClass="title-small"/>
-                        <VBox spacing="10" alignment="CENTER">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
+                        <Label text="Исследовательские программы обсерватории" styleClass="title-small"/>
+                        <VBox spacing="15" alignment="CENTER">
                             <Button text="Доступные программы" onAction="#handleViewPrograms"
-                                    styleClass="btn-main" prefWidth="220"/>
+                                    styleClass="btn-main" prefWidth="250"/>
+                            <Text text="Просмотр активных исследовательских программ" styleClass="tab-field-label"/>
                         </VBox>
                     </VBox>
                 </Tab>
 
                 <Tab text="🔭 Телескопы" closable="false">
-                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
                         <Label text="Оборудование обсерватории" styleClass="title-small"/>
-                        <VBox spacing="10" alignment="CENTER">
+                        <VBox spacing="15" alignment="CENTER">
                             <Button text="Доступные телескопы" onAction="#handleViewTelescopes"
-                                    styleClass="btn-main" prefWidth="220"/>
+                                    styleClass="btn-main" prefWidth="250"/>
+                            <Text text="Просмотр характеристик и доступности оборудования" styleClass="tab-field-label"/>
                         </VBox>
                     </VBox>
                 </Tab>

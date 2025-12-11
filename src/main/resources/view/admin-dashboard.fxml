@@ -3,70 +3,65 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.observatory.observatorysystem.client.controller.AdminDashboardController"
-      spacing="20" alignment="TOP_CENTER" styleClass="app-background">
+      spacing="20" alignment="TOP_CENTER"
+      stylesheets="@/static/css/styles.css"
+      styleClass="app-background">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <!-- Header -->
     <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
         <Label fx:id="welcomeLabel" text="🔭 Панель администратора" styleClass="header-title"/>
         <Region HBox.hgrow="ALWAYS"/>
         <Button text="Выйти" onAction="#handleLogout" styleClass="btn-danger"/>
     </HBox>
 
-    <!-- Основной контент -->
-    <VBox spacing="15" alignment="TOP_CENTER">
+    <VBox spacing="15" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
         <Label text="Управление системой обсерватории" styleClass="title-medium"/>
 
-        <TabPane styleClass="tabs-container">
+        <TabPane styleClass="tab-pane" VBox.vgrow="ALWAYS" >
             <tabs>
                 <Tab text="📊 Программы" closable="false">
-                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
                         <Label text="Управление исследовательскими программами" styleClass="title-small"/>
-                        <VBox spacing="10" alignment="CENTER">
-                            <Button text="Просмотр программ" onAction="#handleViewPrograms"
-                                    styleClass="btn-main" prefWidth="220"/>
+                        <VBox spacing="15" alignment="CENTER">
                             <Button text="Управление программами" onAction="#handleManagePrograms"
-                                    styleClass="btn-alt" prefWidth="220"/>
+                                    styleClass="btn-main" prefWidth="250"/>
                         </VBox>
-                    </VBox>
-                </Tab>
-
-                <Tab text="🔭 Телескопы" closable="false">
-                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
-                        <Label text="Управление оборудованием обсерватории" styleClass="title-small"/>
-                        <VBox spacing="10" alignment="CENTER">
-                            <Button text="Просмотр телескопов" onAction="#handleViewTelescopes"
-                                    styleClass="btn-main" prefWidth="220"/>
-                            <Button text="Управление телескопами" onAction="#handleManageTelescopes"
-                                    styleClass="btn-alt" prefWidth="220"/>
-                        </VBox>
+                        <Text text="Добавление, изменение и удаление программ" styleClass="tab-field-label"/>
                     </VBox>
                 </Tab>
 
                 <Tab text="📋 Заявки" closable="false">
-                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
                         <Label text="Управление заявками на наблюдения" styleClass="title-small"/>
-                        <VBox spacing="10" alignment="CENTER">
-                            <Button text="Все заявки" onAction="#handleManageAllObservations"
-                                    styleClass="btn-main" prefWidth="220"/>
-                            <Button text="Статистика" onAction="#handleViewStatistics"
-                                    styleClass="btn-alt" prefWidth="220"/>
-                        </VBox>
+                        <HBox spacing="30" alignment="CENTER">
+                            <VBox spacing="15" alignment="CENTER">
+                                <Button text="Все заявки" onAction="#handleManageAllObservations"
+                                        styleClass="btn-main" prefWidth="250"/>
+                                <Text text="Просмотр и модерация всех заявок" styleClass="tab-field-label"/>
+                            </VBox>
+                            <VBox spacing="15" alignment="CENTER">
+                                <Button text="Статистика" onAction="#handleViewStatistics"
+                                        styleClass="btn-main" prefWidth="250"/>
+                                <Text text="Общая статистика использования" styleClass="tab-field-label"/>
+                            </VBox>
+                        </HBox>
                     </VBox>
                 </Tab>
 
                 <Tab text="👥 Пользователи" closable="false">
-                    <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
                         <Label text="Управление пользователями системы" styleClass="title-small"/>
-                        <VBox spacing="10" alignment="CENTER">
+                        <VBox spacing="15" alignment="CENTER">
                             <Button text="Управление пользователями" onAction="#handleUsersManagement"
-                                    styleClass="btn-main" prefWidth="220"/>
+                                    styleClass="btn-main" prefWidth="250"/>
+                            <Text text="Изменение ролей" styleClass="tab-field-label"/>
                         </VBox>
                     </VBox>
                 </Tab>
