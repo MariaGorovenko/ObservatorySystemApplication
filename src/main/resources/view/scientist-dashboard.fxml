@@ -65,6 +65,16 @@
                         </VBox>
                     </VBox>
                 </Tab>
+
+                <Tab text="Справка" closable="false">
+                    <VBox spacing="25" alignment="CENTER" styleClass="tab-content">
+                        <Label text="Информация об авторе и программном продукте" styleClass="title-small"/>
+                        <VBox spacing="15" alignment="CENTER">
+                            <Button text="Об авторе" onAction="#handleAboutAuthor"
+                                    styleClass="btn-main" prefWidth="250"/>
+                        </VBox>
+                    </VBox>
+                </Tab>
             </tabs>
         </TabPane>
     </VBox>

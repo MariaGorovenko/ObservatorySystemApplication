@@ -138,6 +138,12 @@
     -fx-font-weight: bold;
 }
 
+/*.text-normal {*/
+/*    -fx-font-size: 16px;*/
+/*    -fx-text-fill: white;*/
+/*    -fx-font-weight: normal;*/
+/*}*/
+
 /* --- Стили для TabPane (Система навигации) --- */
 
 /* Контейнер вкладок */

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER" spacing="20"
+      style="-fx-background-color: rgba(20, 30, 50); -fx-padding: 20;"
+      stylesheets="@/static/css/styles.css">
+
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Text text="Об авторе" styleClass="title"/>
+
+    <VBox spacing="10" alignment="CENTER">
+        <Label text="ФИО:" styleClass="title-small"/>
+        <Text text="Горовенко Мария" style="-fx-fill: white;"/>
+
+        <Label text="Учебное заведение и группа:" styleClass="title-small"/>
+        <Text text="Финансовый университет при Правительстве РФ, группа ИД23-2" style="-fx-fill: white;"/>
+
+        <Label text="Контактные данные:" styleClass="title-small"/>
+        <Text text="Email: 236295@edu.fa.ru&#10;Telegram: @mariagor05" style="-fx-fill: white;"/>
+
+        <Label text="Опыт работы с технологиями:" styleClass="title-small"/>
+        <Text text="• Spring Boot 3.x (REST API, Spring Data JPA, Security)&#10;• JavaFX (GUI, FXML, CSS-стилизация)&#10;• PostgreSQL&#10;• Maven" style="-fx-fill: white;"/>
+
+        <Label text="Период разработки проекта:" styleClass="title-small"/>
+        <Text text="Начало: 27 октября 2025&#10;Завершение: 18 декабря 2025" style="-fx-fill: white;"/>
+    </VBox>
+
+</VBox>

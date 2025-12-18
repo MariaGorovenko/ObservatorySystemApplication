@@ -20,5 +20,6 @@
     <VBox spacing="20" alignment="CENTER">
         <Button text="Войти" onAction="#handleLogin" styleClass="action-button"/>
         <Button text="Зарегистрироваться" onAction="#handleRegister" styleClass="action-button"/>
+        <Button text="Об авторе" onAction="#handleAboutAuthor" styleClass="action-button"/>
     </VBox>
 </VBox>

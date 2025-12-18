@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AdminDashboardController {
@@ -117,6 +118,25 @@ public class AdminDashboardController {
         } catch (Exception e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть просмотр программ");
+        }
+    }
+
+    @FXML
+    private void handleAboutAuthor() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/about-author.fxml"));  // укажи правильный путь
+            Parent root = loader.load();
+
+            Stage aboutStage = new Stage();
+            aboutStage.setScene(new Scene(root, 600, 500));
+            aboutStage.setTitle("Об авторе");
+            aboutStage.setResizable(false);
+            aboutStage.initModality(Modality.APPLICATION_MODAL);  // модальное окно
+            aboutStage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Не удалось открыть окно 'Об авторе'");
         }
     }
 
