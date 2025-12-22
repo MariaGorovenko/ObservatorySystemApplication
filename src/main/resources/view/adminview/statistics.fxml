@@ -28,46 +28,46 @@
         </HBox>
 
         <!-- Статистика в цифрах -->
-        <Label text="Общая статистика заявок:" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>
-        <GridPane hgap="15" vgap="10" prefHeight="100">
-            <columnConstraints>
-                <ColumnConstraints prefWidth="150"/>
-                <ColumnConstraints prefWidth="150"/>
-                <ColumnConstraints prefWidth="150"/>
-                <ColumnConstraints prefWidth="150"/>
-                <ColumnConstraints prefWidth="150"/>
-            </columnConstraints>
+<!--        <Label text="Общая статистика заявок:" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--        <GridPane hgap="15" vgap="10" prefHeight="100">-->
+<!--            <columnConstraints>-->
+<!--                <ColumnConstraints prefWidth="150"/>-->
+<!--                <ColumnConstraints prefWidth="150"/>-->
+<!--                <ColumnConstraints prefWidth="150"/>-->
+<!--                <ColumnConstraints prefWidth="150"/>-->
+<!--                <ColumnConstraints prefWidth="150"/>-->
+<!--            </columnConstraints>-->
 
-            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="0">
-                <Label text="Всего заявок" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label fx:id="totalRequestsLabel" text="0"
-                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            </VBox>
+<!--            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="0">-->
+<!--                <Label text="Всего заявок" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                <Label fx:id="totalRequestsLabel" text="0"-->
+<!--                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--            </VBox>-->
 
-            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="1">
-                <Label text="Ожидают решения" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label fx:id="pendingRequestsLabel" text="0"
-                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            </VBox>
+<!--            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="1">-->
+<!--                <Label text="Ожидают решения" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                <Label fx:id="pendingRequestsLabel" text="0"-->
+<!--                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--            </VBox>-->
 
-            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="2">
-                <Label text="Одобрено" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label fx:id="approvedRequestsLabel" text="0"
-                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            </VBox>
+<!--            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="2">-->
+<!--                <Label text="Одобрено" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                <Label fx:id="approvedRequestsLabel" text="0"-->
+<!--                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--            </VBox>-->
 
-            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="3">
-                <Label text="Запланированы" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label fx:id="scheduledRequestsLabel" text="0"
-                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            </VBox>
+<!--            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="3">-->
+<!--                <Label text="Запланированы" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                <Label fx:id="scheduledRequestsLabel" text="0"-->
+<!--                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--            </VBox>-->
 
-            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="4">
-                <Label text="Завершено" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                <Label fx:id="completedRequestsLabel" text="0"
-                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            </VBox>
-        </GridPane>
+<!--            <VBox alignment="CENTER" spacing="5" GridPane.columnIndex="4">-->
+<!--                <Label text="Завершено" style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                <Label fx:id="completedRequestsLabel" text="0"-->
+<!--                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--            </VBox>-->
+<!--        </GridPane>-->
 
         <!-- Графики - первая строка -->
         <HBox spacing="20" prefHeight="350">
@@ -107,45 +107,45 @@
             </BarChart>
         </VBox>
 
-        <VBox spacing="10" style="-fx-background-color: rgba(20, 30, 50); -fx-padding: 15; -fx-border-color: white;">
-            <Label text="Дополнительные показатели"
-                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            <GridPane hgap="30" vgap="10">
-                <columnConstraints>
-                    <ColumnConstraints prefWidth="200"/>
-                    <ColumnConstraints prefWidth="200"/>
-                    <ColumnConstraints prefWidth="200"/>
-                    <ColumnConstraints prefWidth="200"/>
-                </columnConstraints>
+<!--        <VBox spacing="10" style="-fx-background-color: rgba(20, 30, 50); -fx-padding: 15; -fx-border-color: white;">-->
+<!--            <Label text="Дополнительные показатели"-->
+<!--                   style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--            <GridPane hgap="30" vgap="10">-->
+<!--                <columnConstraints>-->
+<!--                    <ColumnConstraints prefWidth="200"/>-->
+<!--                    <ColumnConstraints prefWidth="200"/>-->
+<!--                    <ColumnConstraints prefWidth="200"/>-->
+<!--                    <ColumnConstraints prefWidth="200"/>-->
+<!--                </columnConstraints>-->
 
-                <VBox spacing="5" GridPane.columnIndex="0">
-                    <Label text="Средний приоритет" style="-fx-font-size: 11; -fx-text-fill: white;"/>
-                    <HBox alignment="CENTER_LEFT" spacing="5">
-                        <Label fx:id="averagePriorityLabel" text="0.0"
-                               style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                        <Label text="/5" style="-fx-font-size: 11; -fx-text-fill: white;"/>
-                    </HBox>
-                </VBox>
+<!--                <VBox spacing="5" GridPane.columnIndex="0">-->
+<!--                    <Label text="Средний приоритет" style="-fx-font-size: 11; -fx-text-fill: white;"/>-->
+<!--                    <HBox alignment="CENTER_LEFT" spacing="5">-->
+<!--                        <Label fx:id="averagePriorityLabel" text="0.0"-->
+<!--                               style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                        <Label text="/5" style="-fx-font-size: 11; -fx-text-fill: white;"/>-->
+<!--                    </HBox>-->
+<!--                </VBox>-->
 
-                <VBox spacing="5" GridPane.columnIndex="1">
-                    <Label text="Заявок за месяц" style="-fx-font-size: 11; -fx-text-fill: white;"/>
-                    <Label fx:id="monthlyRequestsLabel" text="0"
-                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                </VBox>
+<!--                <VBox spacing="5" GridPane.columnIndex="1">-->
+<!--                    <Label text="Заявок за месяц" style="-fx-font-size: 11; -fx-text-fill: white;"/>-->
+<!--                    <Label fx:id="monthlyRequestsLabel" text="0"-->
+<!--                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                </VBox>-->
 
-                <VBox spacing="5" GridPane.columnIndex="2">
-                    <Label text="Средняя длительность" style="-fx-font-size: 11; -fx-text-fill: white;"/>
-                    <Label fx:id="avgDurationLabel" text="0.0 ч"
-                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                </VBox>
+<!--                <VBox spacing="5" GridPane.columnIndex="2">-->
+<!--                    <Label text="Средняя длительность" style="-fx-font-size: 11; -fx-text-fill: white;"/>-->
+<!--                    <Label fx:id="avgDurationLabel" text="0.0 ч"-->
+<!--                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                </VBox>-->
 
-                <VBox spacing="5" GridPane.columnIndex="3">
-                    <Label text="Отклонено" style="-fx-font-size: 11; -fx-text-fill: white;"/>
-                    <Label fx:id="rejectedRequestsLabel" text="0"
-                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>
-                </VBox>
-            </GridPane>
-        </VBox>
+<!--                <VBox spacing="5" GridPane.columnIndex="3">-->
+<!--                    <Label text="Отклонено" style="-fx-font-size: 11; -fx-text-fill: white;"/>-->
+<!--                    <Label fx:id="rejectedRequestsLabel" text="0"-->
+<!--                           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;"/>-->
+<!--                </VBox>-->
+<!--            </GridPane>-->
+<!--        </VBox>-->
 
     </VBox>
 

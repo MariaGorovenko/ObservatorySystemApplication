@@ -164,6 +164,30 @@ public class ApiService {
         return response.body();
     }
 
+    public String getStatistics() throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(BASE_URL + "/observations/stats"))
+                .GET()
+                .header("Content-Type", "application/json")
+                .build();
+
+        System.out.println("GET ??????: " + request.uri());
+        System.out.println("=======");
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+        System.out.println("=== DEBUG RESPONSE ===");
+        System.out.println("Status Code: " + response.statusCode());
+        System.out.println("Response Body: " + response.body());
+        System.out.println("======================");
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException("Ошибка загрузки статистики: " + response.statusCode() + " - " + response.body());
+        }
+
+        return response.body();
+    }
+
     // Метод для проверки сессии
     public String checkSession() throws Exception {
         return get("/auth/check-session");
